@@ -2,6 +2,10 @@
 async function getWeather() {
     const apiKey = 'd4fd08984d351d9191d7b30df5e82861'; // Your API key for the OpenWeatherMap API
     const city = document.getElementById('city').value; // Get the city name from the input field
+    if (!city) {
+        document.getElementById('weatherInfo').innerHTML = `<p class="error">Please enter a city name</p>`;
+        return;
+    }
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiKey}&units=metric`; // Construct the API URL with the city and API key
 
     document.getElementById('loading').style.display = 'block'; // Show a loading indicator while fetching data
@@ -13,6 +17,7 @@ async function getWeather() {
         }
         const data = await response.json(); // Parse the response data as JSON
         displayWeather(data); // Call the function to display the weather data
+        localStorage.setItem('lastCity', city); // Save the last searched city in local storage
     } catch (error) {
         document.getElementById('weatherInfo').innerHTML = `<p class="error">${error.message}</p>`; // Display an error message if the fetch fails
     } finally {
@@ -135,3 +140,12 @@ function getWeatherIcon(iconCode) {
         default: return 'question'; // Default icon for unknown conditions
     }
 }
+
+// Check if there's a saved city in local storage and fetch its weather data on page load
+window.onload = function() {
+    const lastCity = localStorage.getItem('lastCity');
+    if (lastCity) {
+        document.getElementById('city').value = lastCity;
+        getWeather();
+    }
+};
