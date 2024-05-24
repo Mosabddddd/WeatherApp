@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- This link below is font awesome which will make me be able to to use weather icons like sunny, cloudy, 
+    rainy and etc. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="styles.css"> 
+    <!-- This chart.js link will provide the chart graph for the weather -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="weather-container">
         <h1>Weather App</h1>
         <input type="text" id="city" placeholder="Enter city">
-        <button onclick="getWeather()">Get Weather</button>
+        <button onclick="getWeather()">Get Weather</button> <!-- This function make clicking on get weather work -->
         <div class="weather-info" id="weatherInfo"></div>
         <div class="loading" id="loading" style="display:none;">Loading...</div>
         <canvas id="weatherChart" style="display:none;"></canvas>
