@@ -17,6 +17,8 @@
         <h1>Weather App</h1>
         <input type="text" id="city" placeholder="Enter city">
         <button onclick="getWeather()">Get Weather</button> <!-- This function make clicking on get weather work -->
+        <button onclick="getCurrentLocationWeather()">Get Current Location Weather</button> <!-- Button to get current location weather -->
+
         <div class="weather-info" id="weatherInfo"></div>
         <div class="loading" id="loading" style="display:none;">Loading...</div>
         <canvas id="weatherChart" style="display:none;"></canvas>
